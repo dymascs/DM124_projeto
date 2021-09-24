@@ -16,6 +16,9 @@ app.use(express.json());
 const questionsRouter = require('./routes/questions');
 app.use('/api/questions', questionsRouter);
 
+const answersRouter = require('./routes/answers');
+app.use('/api/answers', answersRouter);
+
 // Missing routes
 app.use(notFound);
 
