@@ -1,25 +1,23 @@
 const db = {}
 let sequence = 0;
 
-// Pegar do horário atual
-//var timestamp = new Date().getTime();
-//var data = new Date(timestamp);
+
 
 
 class UsersService {
 
   static add(newUser) {
 
-    var timestamp = new Date().getTime();
-    var data = new Date(timestamp);
+    var timestamp = new Date().getTime();//pega a data e hora.
+    var data = new Date(timestamp);     //formata a data e hora.
 
     return new Promise((resolve) => {
       const user = {
         id: ++sequence,
         name: newUser.name,
         role: newUser.role,
-        creationDate: newUser.creationDate || data.toUTCString(),
-        modifiedDate: newUser.modifiedDate || data.toUTCString()
+        creationDate: newUser.creationDate || data.toUTCString(), //seta a data de criação.
+        modifiedDate: newUser.modifiedDate || data.toUTCString()  //seta a data de modifiação para a mesma da criação.
       };
       db[user.id] = user;
       resolve(user);
@@ -42,16 +40,16 @@ class UsersService {
 
   static update(userId, updatedUser) {
 
-    var timestamp_up = new Date().getTime();
-    var data_up = new Date(timestamp_up);
+    var timestamp_up = new Date().getTime();   //pega a data e hora.
+    var data_up = new Date(timestamp_up);     //formata a data e hora.
 
     return new Promise(async (resolve) => {
       const user = await UsersService.getById(userId);
       if(user) {
         user.name = updatedUser.name || user.name;
         user.role = updatedUser.role || user.role;
-        user.creationDate = user.creationDate;
-        user.modifiedDate = data_up.toUTCString();
+        user.creationDate = user.creationDate;    // forma de manter o create date sem que usario altere mesmo tentando.
+        user.modifiedDate = data_up.toUTCString();// atualiza a data.
         resolve(user);
       }
       resolve(null);

@@ -10,8 +10,8 @@ class QuestionsService {
 
   static add(newQuestion) {
 
-    var timestamp = new Date().getTime();
-    var data = new Date(timestamp);
+    var timestamp = new Date().getTime();//pega a data e hora.
+    var data = new Date(timestamp);      //formata a data e hora.
 
     return new Promise((resolve) => {
       const question = {
@@ -19,8 +19,8 @@ class QuestionsService {
         status: newQuestion.status || 'new',
         description: newQuestion.description,
         options: newQuestion.options,
-        creationDate: newQuestion.creationDate || data.toUTCString(),
-        modifiedDate: newQuestion.modifiedDate || data.toUTCString()
+        creationDate: newQuestion.creationDate || data.toUTCString(), //seta a data de criação.
+        modifiedDate: newQuestion.modifiedDate || data.toUTCString()  //seta a data de modifiação para a mesma da criação.
       };
       db[question.id] = question;
       resolve(question);
@@ -43,8 +43,8 @@ class QuestionsService {
 
   static update(questionId, updatedQuestion) {
 
-    var timestamp_up = new Date().getTime();
-    var data_up = new Date(timestamp_up);
+    var timestamp_up = new Date().getTime();   //pega a data.
+    var data_up = new Date(timestamp_up);     //formata a data.
 
     return new Promise(async (resolve) => {
       const question = await QuestionsService.getById(questionId);
@@ -53,8 +53,8 @@ class QuestionsService {
         question.status = hasValue ? updatedQuestion.status : question.status;
         question.description = updatedQuestion.description || question.description;
         question.options = updatedQuestion.options || question.options;
-        question.creationDate = question.creationDate;
-        question.modifiedDate = data_up.toUTCString();
+        question.creationDate = question.creationDate;    // forma de manter o create date sem que usario altere mesmo tentando.
+        question.modifiedDate = data_up.toUTCString();    // atualiza a data.
         resolve(question);
       }
       resolve(null);
