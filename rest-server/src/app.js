@@ -19,6 +19,9 @@ app.use('/api/questions', questionsRouter);
 const answersRouter = require('./routes/answers');
 app.use('/api/answers', answersRouter);
 
+const usersRouter = require('./routes/users');
+app.use('/api/users', usersRouter);
+
 // Missing routes
 app.use(notFound);
 
