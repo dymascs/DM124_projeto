@@ -1,9 +1,7 @@
-const db = {}
-let sequence = 0;
+const Question = require('../models/question');
 
-// Pegar do horário atual
-//var timestamp = new Date().getTime();
-//var data = new Date(timestamp);
+
+
 
 
 class QuestionsService {
@@ -14,30 +12,24 @@ class QuestionsService {
     var data = new Date(timestamp);      //formata a data e hora.
 
     return new Promise((resolve) => {
-      const question = {
-        id: ++sequence,
-        status: newQuestion.status || 'new',
-        description: newQuestion.description,
-        options: newQuestion.options,
-        creationDate: newQuestion.creationDate || data.toUTCString(), //seta a data de criação.
-        modifiedDate: newQuestion.modifiedDate || data.toUTCString()  //seta a data de modifiação para a mesma da criação.
-      };
-      db[question.id] = question;
-      resolve(question);
+      newQuestion.status = newQuestion.status || 'new';
+      newQuestion.creationDate = newQuestion.creationDate || data.toUTCString(), //seta a data de criação.
+      newQuestion.modifiedDate = newQuestion.modifiedDate || data.toUTCString()  //seta a data de modifiação para a mesma da criação.
+      
+      
+      resolve(new Question(newQuestion).save());
     });
   }
 
   static getAll() {
-    const toArray = key => db[key];
     return new Promise((resolve) => {
-      const questions = Object.keys(db).map(toArray);
-      resolve(questions);
+      resolve(Question.find());
     });
   }
 
   static getById(id) {
     return new Promise((resolve) => {
-      resolve(db[id]);
+      resolve(Question.findById(id));
     });
   }
 
@@ -47,28 +39,21 @@ class QuestionsService {
     var data_up = new Date(timestamp_up);     //formata a data.
 
     return new Promise(async (resolve) => {
-      const question = await QuestionsService.getById(questionId);
-      if(question) {
-        const hasValue = updatedQuestion.status != null;
-        question.status = hasValue ? updatedQuestion.status : question.status;
+      Question.findById(questionId)
+        .then(question => {
+        question.status = updatedQuestion.status || question.status;
         question.description = updatedQuestion.description || question.description;
         question.options = updatedQuestion.options || question.options;
         question.creationDate = question.creationDate;    // forma de manter o create date sem que usario altere mesmo tentando.
         question.modifiedDate = data_up.toUTCString();    // atualiza a data.
-        resolve(question);
-      }
-      resolve(null);
-    })
+        resolve(question.save());
+      })
+    });
   }
 
-  static delete(id) {
+  static delete(questionId) {
     return new Promise((resolve) => {
-      const question = db[id];
-      if(question) {
-        delete db[id];
-        resolve(true);
-      }
-      resolve(false);
+      resolve(Question.findByIdAndRemove(questionId));
     });
   }
 }
