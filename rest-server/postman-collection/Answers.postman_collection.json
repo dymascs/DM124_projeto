@@ -1,12 +1,12 @@
 {
 	"info": {
-		"_postman_id": "6e1e2945-c0ca-4767-880a-757814477dbd",
-		"name": "Questions",
+		"_postman_id": "44e81975-4cf6-49d5-bdce-9d02dfa5b50e",
+		"name": "Answers",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Create Question",
+			"name": "Create Answers",
 			"event": [
 				{
 					"listen": "test",
@@ -45,10 +45,10 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"description\": \"descrição01\",\n    \"options\" : \"options_teste01\"\n}"
+					"raw": "{\n\t\"key\" : \"01\",\n    \"name\" : \"name_teste01\",\n    \"answer\" : \"answer_teste01\"\n}"
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/questions",
+					"raw": "http://localhost:8080/api/answers",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -56,19 +56,19 @@
 					"port": "8080",
 					"path": [
 						"api",
-						"questions"
+						"answers"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Retrieve Questions",
+			"name": "Retrieve Answers",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/questions",
+					"raw": "http://localhost:8080/api/answers",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -76,19 +76,19 @@
 					"port": "8080",
 					"path": [
 						"api",
-						"questions"
+						"answers"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Retrieve Question by Id",
+			"name": "Retrieve Answers by Id",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/questions/614e5fd3b6fdb933f795de91",
+					"raw": "http://localhost:8080/api/answers/614e658e7b9150664b0eaba1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -96,15 +96,15 @@
 					"port": "8080",
 					"path": [
 						"api",
-						"questions",
-						"614e5fd3b6fdb933f795de91"
+						"answers",
+						"614e658e7b9150664b0eaba1"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Update Question",
+			"name": "Update Answers",
 			"request": {
 				"method": "PATCH",
 				"header": [
@@ -117,10 +117,10 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"description\": \"descrição02\"\n    \n}"
+					"raw": "{\n    \"name\": \"name_teste01_2\"\n}"
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/questions/614e5fd3b6fdb933f795de91",
+					"raw": "http://localhost:8080/api/answers/614e658e7b9150664b0eaba1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -128,15 +128,15 @@
 					"port": "8080",
 					"path": [
 						"api",
-						"questions",
-						"614e5fd3b6fdb933f795de91"
+						"answers",
+						"614e658e7b9150664b0eaba1"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Update Question (multi)",
+			"name": "Update Answers (multi)",
 			"request": {
 				"method": "PATCH",
 				"header": [
@@ -149,10 +149,10 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"description\": \"descrição01\",\n    \"options\" : \"options_teste01\"\n}"
+					"raw": "{\n    \"name\" : \"name_teste01_03\",\n    \"answer\" : \"answer_teste01_02\"\n}"
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/questions/614e5fd3b6fdb933f795de91",
+					"raw": "http://localhost:8080/api/answers/614e658e7b9150664b0eaba1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -160,15 +160,15 @@
 					"port": "8080",
 					"path": [
 						"api",
-						"questions",
-						"614e5fd3b6fdb933f795de91"
+						"answers",
+						"614e658e7b9150664b0eaba1"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Delete Question",
+			"name": "Delete Answers",
 			"request": {
 				"method": "DELETE",
 				"header": [
@@ -180,7 +180,7 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:8080/api/questions/614e5fd3b6fdb933f795de91",
+					"raw": "http://localhost:8080/api/answers/614e658e7b9150664b0eaba1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -188,8 +188,8 @@
 					"port": "8080",
 					"path": [
 						"api",
-						"questions",
-						"614e5fd3b6fdb933f795de91"
+						"answers",
+						"614e658e7b9150664b0eaba1"
 					]
 				}
 			},

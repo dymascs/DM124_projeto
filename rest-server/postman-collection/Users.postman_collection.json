@@ -1,12 +1,12 @@
 {
 	"info": {
-		"_postman_id": "6e1e2945-c0ca-4767-880a-757814477dbd",
-		"name": "Questions",
+		"_postman_id": "3dcb2ffd-0258-439d-8ada-4c1a0f89f6fe",
+		"name": "Users",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Create Question",
+			"name": "Create Users",
 			"event": [
 				{
 					"listen": "test",
@@ -45,10 +45,10 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"description\": \"descrição01\",\n    \"options\" : \"options_teste01\"\n}"
+					"raw": "{\n\t\n    \"name\" : \"user_teste01\",\n    \"role\" : \"role_teste01\"\n}"
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/questions",
+					"raw": "http://localhost:8080/api/users",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -56,19 +56,19 @@
 					"port": "8080",
 					"path": [
 						"api",
-						"questions"
+						"users"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Retrieve Questions",
+			"name": "Retrieve Users",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/questions",
+					"raw": "http://localhost:8080/api/users",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -76,19 +76,19 @@
 					"port": "8080",
 					"path": [
 						"api",
-						"questions"
+						"users"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Retrieve Question by Id",
+			"name": "Retrieve Users by Id",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/questions/614e5fd3b6fdb933f795de91",
+					"raw": "http://localhost:8080/api/users/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -96,15 +96,15 @@
 					"port": "8080",
 					"path": [
 						"api",
-						"questions",
-						"614e5fd3b6fdb933f795de91"
+						"users",
+						"1"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Update Question",
+			"name": "Update Users",
 			"request": {
 				"method": "PATCH",
 				"header": [
@@ -117,10 +117,10 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"description\": \"descrição02\"\n    \n}"
+					"raw": "{\n\t\n    \"name\" : \"user_teste02\"\n    \n}"
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/questions/614e5fd3b6fdb933f795de91",
+					"raw": "http://localhost:8080/api/users/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -128,15 +128,15 @@
 					"port": "8080",
 					"path": [
 						"api",
-						"questions",
-						"614e5fd3b6fdb933f795de91"
+						"users",
+						"1"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Update Question (multi)",
+			"name": "Update Users(multi)",
 			"request": {
 				"method": "PATCH",
 				"header": [
@@ -149,10 +149,10 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"description\": \"descrição01\",\n    \"options\" : \"options_teste01\"\n}"
+					"raw": "{\n\t\n    \"name\" : \"user_teste03\",\n    \"role\" : \"role_teste02\"\n}"
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/questions/614e5fd3b6fdb933f795de91",
+					"raw": "http://localhost:8080/api/users/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -160,15 +160,15 @@
 					"port": "8080",
 					"path": [
 						"api",
-						"questions",
-						"614e5fd3b6fdb933f795de91"
+						"users",
+						"1"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Delete Question",
+			"name": "Delete Users",
 			"request": {
 				"method": "DELETE",
 				"header": [
@@ -180,7 +180,7 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:8080/api/questions/614e5fd3b6fdb933f795de91",
+					"raw": "http://localhost:8080/api/users/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -188,8 +188,8 @@
 					"port": "8080",
 					"path": [
 						"api",
-						"questions",
-						"614e5fd3b6fdb933f795de91"
+						"users",
+						"1"
 					]
 				}
 			},
